@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dr86oxwldiy77"]
+
+[ext_resource type="Texture2D" uid="uid://cqfcrwf3okio6" path="res://static/2.png" id="1_bsybr"]
+[ext_resource type="Script" path="res://scene/UI/window.gd" id="1_uswtv"]
+[ext_resource type="FontFile" uid="uid://qrhgdent0w1u" path="res://static/x12y16pxMaruMonica.ttf" id="3_tn131"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wvq6h"]
+font = ExtResource("3_tn131")
+font_size = 32
+
+[node name="window" type="Node2D"]
+position = Vector2(-240, -104)
+script = ExtResource("1_uswtv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(304, 232)
+scale = Vector2(0.69, 0.74)
+texture = ExtResource("1_bsybr")
+
+[node name="msg" type="Label" parent="Sprite2D"]
+offset_left = 12.0
+offset_top = -238.0
+offset_right = 336.0
+offset_bottom = 238.0
+text = "asdasdas"
+label_settings = SubResource("LabelSettings_wvq6h")

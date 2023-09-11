@@ -1,7 +1,8 @@
 extends Node2D
 
+var swag = 0
+var step = 1
 func on_timer_timeout():
-	get_node("Sprite2D")
 	pass
 
 # Called when the node enters the scene tree for the first time.
@@ -13,5 +14,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	pass

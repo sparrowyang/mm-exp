@@ -12,33 +12,57 @@ extends Node2D
 @export var tile_set:TileSet # 无用
 @export var build_name = "build"
 
+class Propterty:
+	var level = 0
+	var price = 100
+	var next_level = 500
+	
+var status: Propterty = Propterty.new()
 var tile:TileMap
+var focus = false
+#var detil = preload("res://scene/UI/window.tscn")
+func show_detil():
+	get_node("window").msg = "name  [%s]\nlevel  %s\nprice  %s\nnext_level  %s\n"% \
+							[build_name,status.level,status.price,status.next_level]
+	get_node("window").show()
+
+func hide_detil():
+	get_node("window").hide()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	var body = get_node("StaticBody2D")
-#	tile = get_node("TileMap")
-#	tile.tile_set.set_tileset(tile_set)
-	pass # Replace with function body.
+	tile = get_node("TileMap")
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#  Input.CURSOR_MOVE
 	pass
+	
 func _input(event):
 	# print(get_viewport().get_mouse_position())
-	pass
-
+	if focus and event is InputEventMouseButton:
+		print_debug("click %s" % build_name)
+		show_detil()
+	
 # 处理鼠标移入后
 # 着色器高亮建筑
 func _on_static_body_2d_mouse_entered():
-	print_debug("mouse focus on 【%s】" % build_name)
+#	print_debug("mouse focus on 【%s】" % build_name)
 #	print("mouse focus on %s" % build_name)
+	focus = true
+	self.scale = Vector2(1.1,1.1)
 	tile.material.set_shader_parameter("focus_color",Vector4(1,1,1,1))
 	tile.material.set_shader_parameter("deep",0.3)
-	pass # Replace with function body.
 	get_node("focus").play()
+	show_detil()
+	
 
 func _on_static_body_2d_mouse_exited():
-	print_debug("mouse unfocus on 【%s】" % build_name)
+	focus = false
+	self.scale = Vector2(1,1)
+#	print_debug("mouse unfocus on 【%s】" % build_name)
 	tile.material.set_shader_parameter("deep",0)
 	pass # Replace with function body.
+	hide_detil()
+	
