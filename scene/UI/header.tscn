@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy2tpqxvdluoy"]
+
+[ext_resource type="PackedScene" uid="uid://dr86oxwldiy77" path="res://scene/UI/window.tscn" id="1_hpj7t"]
+[ext_resource type="Script" path="res://scene/UI/header.gd" id="2_4fkex"]
+
+[node name="window" instance=ExtResource("1_hpj7t")]
+
+[node name="window_border" parent="." index="0"]
+offset_right = 368.0
+offset_bottom = 72.0
+
+[node name="msg" parent="window_border/GridContainer" index="0"]
+text = ""
+
+[node name="Node2D" type="Node2D" parent="." index="1"]
+script = ExtResource("2_4fkex")
+
+[node name="Timer" type="Timer" parent="Node2D" index="0"]
+autostart = true

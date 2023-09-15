@@ -9,7 +9,7 @@ extends Node2D
 外部右键->实例化子场景
 若要改变材质，点击子节点可编辑
 """
-@export var tile_set:TileSet # 无用
+
 @export var build_name = "build"
 
 class Propterty:
@@ -18,8 +18,9 @@ class Propterty:
 	var next_level = 500
 	
 var status: Propterty = Propterty.new()
-var tile:TileMap
 var focus = false
+@onready var tile_map = $TileMap
+
 #var detil = preload("res://scene/UI/window.tscn")
 func show_detil():
 	get_node("window").msg = "name  [%s]\nlevel  %s\nprice  %s\nnext_level  %s\n"% \
@@ -29,21 +30,14 @@ func show_detil():
 func hide_detil():
 	get_node("window").hide()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	tile = get_node("TileMap")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	#  Input.CURSOR_MOVE
-	pass
 	
 func _input(event):
 	# print(get_viewport().get_mouse_position())
 	if focus and event is InputEventMouseButton:
 		print_debug("click %s" % build_name)
-		show_detil()
+		if(event.is_pressed()):
+			get_node("focus").play()
+			show_detil()
 	
 # 处理鼠标移入后
 # 着色器高亮建筑
@@ -52,17 +46,17 @@ func _on_static_body_2d_mouse_entered():
 #	print("mouse focus on %s" % build_name)
 	focus = true
 	self.scale = Vector2(1.1,1.1)
-	tile.material.set_shader_parameter("focus_color",Vector4(1,1,1,1))
-	tile.material.set_shader_parameter("deep",0.3)
-	get_node("focus").play()
-	show_detil()
+	tile_map.material.set_shader_parameter("focus_color",Vector4(1,1,1,1))
+	tile_map.material.set_shader_parameter("deep",0.3)
+	
+#	show_detil()
 	
 
 func _on_static_body_2d_mouse_exited():
 	focus = false
 	self.scale = Vector2(1,1)
 #	print_debug("mouse unfocus on 【%s】" % build_name)
-	tile.material.set_shader_parameter("deep",0)
+	tile_map.material.set_shader_parameter("deep",0)
 	pass # Replace with function body.
 	hide_detil()
 	

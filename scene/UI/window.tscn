@@ -1,27 +1,53 @@
 [gd_scene load_steps=5 format=3 uid="uid://dr86oxwldiy77"]
 
-[ext_resource type="Texture2D" uid="uid://cqfcrwf3okio6" path="res://static/2.png" id="1_bsybr"]
 [ext_resource type="Script" path="res://scene/UI/window.gd" id="1_uswtv"]
-[ext_resource type="FontFile" uid="uid://qrhgdent0w1u" path="res://static/x12y16pxMaruMonica.ttf" id="3_tn131"]
+[ext_resource type="FontFile" uid="uid://dpew0oifd3i26" path="res://static/锐字太空历险像素简.ttf" id="3_fnjgb"]
+[ext_resource type="Texture2D" uid="uid://brrtlrhcfivna" path="res://static/Window.png" id="4_n5kv6"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_wvq6h"]
-font = ExtResource("3_tn131")
-font_size = 32
+[sub_resource type="LabelSettings" id="LabelSettings_ce5dh"]
+font = ExtResource("3_fnjgb")
 
-[node name="window" type="Node2D"]
-position = Vector2(-240, -104)
+[node name="window" type="Control"]
+layout_mode = 3
+anchor_left = 0.028
+anchor_top = 0.074
+anchor_right = 0.028
+anchor_bottom = 0.074
+offset_left = -32.256
+offset_top = -47.952
+offset_right = -32.256
+offset_bottom = -47.952
 script = ExtResource("1_uswtv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 2
-position = Vector2(304, 232)
-scale = Vector2(0.69, 0.74)
-texture = ExtResource("1_bsybr")
+[node name="window_border" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 184.0
+offset_bottom = 160.0
+size_flags_horizontal = 0
+texture = ExtResource("4_n5kv6")
+region_rect = Rect2(64, 0, 64, 64)
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
-[node name="msg" type="Label" parent="Sprite2D"]
-offset_left = 12.0
-offset_top = -238.0
-offset_right = 336.0
-offset_bottom = 238.0
-text = "asdasdas"
-label_settings = SubResource("LabelSettings_wvq6h")
+[node name="GridContainer" type="GridContainer" parent="window_border"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="msg" type="Label" parent="window_border/GridContainer"]
+layout_mode = 2
+text = "asdasdas
+中午"
+label_settings = SubResource("LabelSettings_ce5dh")

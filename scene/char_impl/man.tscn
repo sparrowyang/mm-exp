@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5frrvb2r8tdy"]
+
+[ext_resource type="PackedScene" uid="uid://biwbahd5gnl42" path="res://scene/character.tscn" id="1_haxj6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0o0ed"]
+size = Vector2(29, 32)
+
+[node name="character" instance=ExtResource("1_haxj6")]
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(35, 31)
+shape = SubResource("RectangleShape2D_0o0ed")

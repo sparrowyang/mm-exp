@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo3a57jf3xd47"]
+
+[ext_resource type="PackedScene" uid="uid://cr2sokupfdqj0" path="res://scene/build.tscn" id="1_m73mi"]
+[ext_resource type="Shader" path="res://scene/build.gdshader" id="2_u254m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xakl8"]
+resource_local_to_scene = true
+shader = ExtResource("2_u254m")
+shader_parameter/focus_color = Color(1, 1, 1, 1)
+shader_parameter/deep = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bd2b"]
+size = Vector2(32, 57)
+
+[node name="Node2D" instance=ExtResource("1_m73mi")]
+
+[node name="TileMap" parent="." index="0"]
+material = SubResource("ShaderMaterial_xakl8")
+layer_0/tile_data = PackedInt32Array(65537, 1, 9, 131073, 1, 10)
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(-8, 4.5)
+shape = SubResource("RectangleShape2D_3bd2b")

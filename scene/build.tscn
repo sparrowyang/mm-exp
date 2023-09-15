@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cr2sokupfdqj0"]
+[gd_scene load_steps=7 format=3 uid="uid://cr2sokupfdqj0"]
 
 [ext_resource type="TileSet" uid="uid://dwp5ro8dvufp3" path="res://static/common.tres" id="1_hfqlw"]
 [ext_resource type="Script" path="res://scene/build.gd" id="1_qffxl"]
@@ -11,9 +11,6 @@ resource_local_to_scene = true
 shader = ExtResource("2_ho6ds")
 shader_parameter/focus_color = Color(1, 1, 1, 1)
 shader_parameter/deep = 0.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dse78"]
-size = Vector2(96, 96)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_qffxl")
@@ -31,16 +28,17 @@ input_pickable = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-8, -14)
-shape = SubResource("RectangleShape2D_dse78")
 
 [node name="focus" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_vk8jm")
 
 [node name="window" parent="." instance=ExtResource("5_rxcjv")]
 visible = false
-position = Vector2(10, 10)
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 10.0
 
-[connection signal="input_event" from="StaticBody2D" to="." method="_on_static_body_2d_input_event"]
 [connection signal="mouse_entered" from="StaticBody2D" to="." method="_on_static_body_2d_mouse_entered"]
 [connection signal="mouse_exited" from="StaticBody2D" to="." method="_on_static_body_2d_mouse_exited"]
 [connection signal="visibility_changed" from="window" to="window" method="_on_visibility_changed"]
