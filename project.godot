@@ -15,8 +15,16 @@ run/main_scene="res://town.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ViewControl="*res://script/view_control.gd"
+
 [display]
 
 window/size/resizable=false
 mouse_cursor/custom_image="res://static/Battle_Cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2(15, 0)
+
+[editor]
+
+movie_writer/movie_file="C:/Users/sparrow/work/code/godot/project1/test.avi"

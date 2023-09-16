@@ -18,7 +18,13 @@ script = ExtResource("1_mw007")
 [node name="people" type="Node" parent="."]
 
 [node name="character" parent="people" instance=ExtResource("2_4t2j0")]
-position = Vector2(688, 256)
+position = Vector2(720, 288)
+
+[node name="character2" parent="people" instance=ExtResource("2_4t2j0")]
+position = Vector2(632, 352)
+
+[node name="character3" parent="people" instance=ExtResource("2_4t2j0")]
+position = Vector2(664, 192)
 
 [node name="Timer" type="Timer" parent="."]
 script = ExtResource("2_kjrrm")
@@ -46,6 +52,8 @@ stream = ExtResource("5_dmk2j")
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_smoothed = true
+position_smoothing_enabled = true
 
 [node name="building" type="Node" parent="."]
 
@@ -68,3 +76,10 @@ offset_left = 719.744
 offset_top = -119.952
 offset_right = 719.744
 offset_bottom = -119.952
+
+[connection signal="mouse_entered" from="people/character" to="people/character" method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="people/character" to="people/character" method="_on_mouse_exited" flags=18]
+[connection signal="mouse_entered" from="people/character2" to="people/character2" method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="people/character2" to="people/character2" method="_on_mouse_exited" flags=18]
+[connection signal="mouse_entered" from="people/character3" to="people/character3" method="_on_mouse_entered" flags=18]
+[connection signal="mouse_exited" from="people/character3" to="people/character3" method="_on_mouse_exited" flags=18]

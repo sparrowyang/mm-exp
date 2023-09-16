@@ -110,4 +110,6 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="shap" type="CollisionShape2D" parent="."]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

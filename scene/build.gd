@@ -38,7 +38,8 @@ func _input(event):
 		if(event.is_pressed()):
 			get_node("focus").play()
 			show_detil()
-	
+			ViewControl.focus_camera(self)
+
 # 处理鼠标移入后
 # 着色器高亮建筑
 func _on_static_body_2d_mouse_entered():

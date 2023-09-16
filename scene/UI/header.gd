@@ -21,6 +21,5 @@ func update():
 		]
 	var x = get_viewport_rect().size.x - window_border.size.x
 	var y = 0
-	print_debug()
-	window.global_position = Vector2(x,y)
+	window.position = Vector2(x,y)
 	
