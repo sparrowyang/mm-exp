@@ -12,13 +12,20 @@ extends Node2D
 
 @export var build_name = "build"
 
+"""
+建筑的属性目前的话包含了等级价值，还有距离下一个等级的经验值。 
+"""
 class Propterty:
 	var level = 0
 	var price = 100
 	var next_level = 500
 	
 var status: Propterty = Propterty.new()
+
+
+# 用于表示鼠标是否处于悬停上的状态。 
 var focus = false
+# 材质的图节点主要是用这个去控制着色器，然后改变节点的颜色。 
 @onready var tile_map = $TileMap
 
 #var detil = preload("res://scene/UI/window.tscn")
@@ -30,7 +37,10 @@ func show_detil():
 func hide_detil():
 	get_node("window").hide()
 
-	
+
+"""
+处理鼠标点击该节点的时候的事件。如果鼠标点击的建筑就会通过show_detil去展示信息。 
+"""
 func _input(event):
 	# print(get_viewport().get_mouse_position())
 	if focus and event is InputEventMouseButton:
@@ -40,8 +50,9 @@ func _input(event):
 			show_detil()
 			ViewControl.focus_camera(self)
 
-# 处理鼠标移入后
-# 着色器高亮建筑
+"""
+处理鼠标悬停时的颜色变化。如果鼠标在个节点的上面，然后会调用 着色器 去改变整个节点的颜色。 
+"""
 func _on_static_body_2d_mouse_entered():
 #	print_debug("mouse focus on 【%s】" % build_name)
 #	print("mouse focus on %s" % build_name)

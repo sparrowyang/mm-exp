@@ -1,4 +1,11 @@
+"""
+这里这个文件是打算做视图控制的，就是做一些。 
+嗯，动画啊，移动什么的，
+这个文件对于整个项目来说是全局的就是说任何地方都能用这个里的函数。 
+"""
 extends Node
+
+
 
 func focus_camera(target:Node):
 	var current_camera = get_viewport().get_camera_2d()

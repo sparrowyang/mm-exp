@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1j13dw0fxeb4"]
+[gd_scene load_steps=6 format=3 uid="uid://c1j13dw0fxeb4"]
 
 [ext_resource type="PackedScene" uid="uid://cr2sokupfdqj0" path="res://scene/build.tscn" id="1_53s51"]
 [ext_resource type="Shader" path="res://scene/build.gdshader" id="2_lhrfb"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_baqnd"]
+polygon = PackedVector2Array(-45, -113, 49, -113, 50, -14, 22, -14, 23, -60, -21, -62, -20, -18, -48, -16)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wxw8c"]
 resource_local_to_scene = true
@@ -15,7 +18,10 @@ size = Vector2(97, 52)
 [node name="Node2D" instance=ExtResource("1_53s51")]
 build_name = "寺庙"
 
-[node name="TileMap" parent="." index="0"]
+[node name="LightOccluder2D" parent="." index="0"]
+occluder = SubResource("OccluderPolygon2D_baqnd")
+
+[node name="TileMap" parent="." index="1"]
 material = SubResource("ShaderMaterial_wxw8c")
 layer_0/tile_data = PackedInt32Array(0, 1, 25, 65536, 1, 26, 131072, 1, 27, 1, 65537, 25, 65537, 65537, 26, 131073, 65537, 27, 2, 131073, 25, 65538, 131073, 26, 131074, 131073, 27)
 

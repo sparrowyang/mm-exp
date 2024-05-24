@@ -15,7 +15,7 @@ size = Vector2(96, 62)
 [node name="Node2D" instance=ExtResource("1_256ix")]
 build_name = "旅馆"
 
-[node name="TileMap" parent="." index="0"]
+[node name="TileMap" parent="." index="1"]
 material = SubResource("ShaderMaterial_wodrl")
 layer_0/tile_data = PackedInt32Array(65536, 1, 18, 131072, 1, 21, 65537, 65537, 20, 131073, 65537, 21, 65538, 131073, 20, 131074, 131073, 21)
 

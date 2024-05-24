@@ -19,3 +19,6 @@ position_smoothing_enabled = true
 
 [node name="se-clicked" type="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource("2_4qdsn")
+
+[node name="light" parent="." index="6"]
+visible = true

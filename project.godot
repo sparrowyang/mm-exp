@@ -12,7 +12,7 @@ config_version=5
 
 config/name="best_game"
 run/main_scene="res://town.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -28,3 +28,7 @@ mouse_cursor/custom_image_hotspot=Vector2(15, 0)
 [editor]
 
 movie_writer/movie_file="C:/Users/sparrow/work/code/godot/project1/test.avi"
+
+[layer_names]
+
+2d_render/layer_2="light mask"

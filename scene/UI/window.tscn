@@ -23,6 +23,7 @@ script = ExtResource("1_uswtv")
 layout_mode = 0
 offset_right = 184.0
 offset_bottom = 160.0
+scale = Vector2(0.991091, 0.857191)
 size_flags_horizontal = 0
 texture = ExtResource("4_n5kv6")
 region_rect = Rect2(64, 0, 64, 64)
