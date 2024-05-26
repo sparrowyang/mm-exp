@@ -27,15 +27,20 @@ var status: Propterty = Propterty.new()
 var focus = false
 # 材质的图节点主要是用这个去控制着色器，然后改变节点的颜色。 
 @onready var tile_map = $TileMap
+@onready var window = $CanvasLayer/window
 
 #var detil = preload("res://scene/UI/window.tscn")
 func show_detil():
-	get_node("window").msg = "name  [%s]\nlevel  %s\nprice  %s\nnext_level  %s\n"% \
+	window.msg = "name  [%s]\nlevel  %s\nprice  %s\nnext_level  %s\n"% \
 							[build_name,status.level,status.price,status.next_level]
-	get_node("window").show()
+	var current_camera_size = get_viewport_rect().size
+	var window_show_size = window.get_window_size()
+	window.position.x = current_camera_size.x - window_show_size.x
+	window.position.y = 0
+	window.show()
 
 func hide_detil():
-	get_node("window").hide()
+	window.hide()
 
 
 """
@@ -70,5 +75,5 @@ func _on_static_body_2d_mouse_exited():
 #	print_debug("mouse unfocus on 【%s】" % build_name)
 	tile_map.material.set_shader_parameter("deep",0)
 	pass # Replace with function body.
-	hide_detil()
+	#hide_detil()
 	

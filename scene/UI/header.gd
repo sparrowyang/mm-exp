@@ -28,7 +28,7 @@ func update():
 		time_dict['day'],
 		time_dict['hour']
 		]
-	var x = get_viewport_rect().size.x - window_border.size.x
-	var y = 0
-	window.position = Vector2(x,y)
+	#var x = get_viewport_rect().size.x - window_border.size.x
+	#var y = 0
+	#window.position = Vector2(x,y)
 	

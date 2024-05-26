@@ -36,13 +36,11 @@ position = Vector2(-8, -14)
 [node name="focus" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_vk8jm")
 
-[node name="window" parent="." instance=ExtResource("5_rxcjv")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="window" parent="CanvasLayer" instance=ExtResource("5_rxcjv")]
 visible = false
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 10.0
-offset_bottom = 10.0
 
 [connection signal="mouse_entered" from="StaticBody2D" to="." method="_on_static_body_2d_mouse_entered"]
 [connection signal="mouse_exited" from="StaticBody2D" to="." method="_on_static_body_2d_mouse_exited"]
-[connection signal="visibility_changed" from="window" to="window" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="CanvasLayer/window" to="CanvasLayer/window" method="_on_visibility_changed"]

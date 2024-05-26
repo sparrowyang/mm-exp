@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://oqlpjh8rt355"]
+[gd_scene load_steps=13 format=3 uid="uid://oqlpjh8rt355"]
 
 [ext_resource type="Script" path="res://town.gd" id="1_mw007"]
 [ext_resource type="PackedScene" uid="uid://c5frrvb2r8tdy" path="res://scene/char_impl/man.tscn" id="2_4t2j0"]
@@ -16,14 +16,6 @@
 shader = ExtResource("4_rkceq")
 shader_parameter/focus_color = Color(0, 0, 0, 1)
 shader_parameter/deep = 0.79
-
-[sub_resource type="Gradient" id="Gradient_sliek"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_u84q5"]
-gradient = SubResource("Gradient_sliek")
-fill = 1
-fill_from = Vector2(0.519658, 0.531624)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(579, 318)
@@ -79,22 +71,11 @@ build_name = "中心"
 position = Vector2(800, 432)
 build_name = "雕塑"
 
-[node name="system" type="Node" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="time" parent="system" instance=ExtResource("9_bgcl3")]
-offset_left = 719.744
-offset_top = -119.952
-offset_right = 719.744
-offset_bottom = -119.952
+[node name="system" type="Node" parent="CanvasLayer"]
 
-[node name="PointLight2D" type="PointLight2D" parent="system"]
-position = Vector2(616, 448)
-scale = Vector2(21.375, 14.7813)
-energy = 3.53
-range_item_cull_mask = 2
-shadow_enabled = true
-shadow_color = Color(0, 0, 0, 1)
-texture = SubResource("GradientTexture2D_u84q5")
+[node name="time" parent="CanvasLayer/system" instance=ExtResource("9_bgcl3")]
 
 [connection signal="mouse_entered" from="people/character2" to="people/character2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="people/character2" to="people/character2" method="_on_mouse_exited"]
