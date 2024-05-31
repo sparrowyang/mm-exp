@@ -22,3 +22,5 @@ stream = ExtResource("2_4qdsn")
 
 [node name="light" parent="." index="6"]
 visible = true
+scale = Vector2(6.45673, -6.125)
+color = Color(1, 1, 1, 0)

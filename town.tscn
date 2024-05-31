@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://oqlpjh8rt355"]
+[gd_scene load_steps=16 format=3 uid="uid://oqlpjh8rt355"]
 
 [ext_resource type="Script" path="res://town.gd" id="1_mw007"]
 [ext_resource type="PackedScene" uid="uid://c5frrvb2r8tdy" path="res://scene/char_impl/man.tscn" id="2_4t2j0"]
@@ -9,13 +9,18 @@
 [ext_resource type="PackedScene" uid="uid://c1j13dw0fxeb4" path="res://scene/build_impl/bless.tscn" id="5_nrm8w"]
 [ext_resource type="PackedScene" uid="uid://0pvwmy6a4jg4" path="res://scene/build_impl/hotel.tscn" id="6_a1gy1"]
 [ext_resource type="PackedScene" uid="uid://crcchyg167him" path="res://scene/build_impl/center.tscn" id="7_m006u"]
+[ext_resource type="Script" path="res://script/camera_impl.gd" id="7_uomxa"]
 [ext_resource type="PackedScene" uid="uid://bo3a57jf3xd47" path="res://scene/build_impl/figure.tscn" id="8_ysk0p"]
 [ext_resource type="PackedScene" uid="uid://dy2tpqxvdluoy" path="res://scene/UI/header.tscn" id="9_bgcl3"]
+[ext_resource type="Texture2D" uid="uid://bqlofljsgrnj" path="res://static/characters/char.png" id="12_4bdg5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ivyk7"]
 shader = ExtResource("4_rkceq")
 shader_parameter/focus_color = Color(0, 0, 0, 1)
-shader_parameter/deep = 0.79
+shader_parameter/deep = 0.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vk7yg"]
+diffuse_texture = ExtResource("12_4bdg5")
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(579, 318)
@@ -24,13 +29,13 @@ script = ExtResource("1_mw007")
 [node name="people" type="Node" parent="."]
 
 [node name="character2" parent="people" instance=ExtResource("2_4t2j0")]
-position = Vector2(496, 440)
+position = Vector2(584, 344)
 
 [node name="character3" parent="people" instance=ExtResource("2_4t2j0")]
-position = Vector2(288, 336)
+position = Vector2(280, 160)
 
 [node name="character" parent="people" instance=ExtResource("2_4t2j0")]
-position = Vector2(696, 240)
+position = Vector2(624, 144)
 scale = Vector2(1.00533, 1)
 
 [node name="Timer" type="Timer" parent="."]
@@ -38,6 +43,7 @@ script = ExtResource("2_kjrrm")
 
 [node name="town_map" type="TileMap" parent="."]
 light_mask = 2
+texture_filter = 1
 material = SubResource("ShaderMaterial_ivyk7")
 position = Vector2(61, 34)
 tile_set = ExtResource("3_jjemn")
@@ -54,6 +60,7 @@ autoplay = true
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_smoothed = true
 position_smoothing_enabled = true
+script = ExtResource("7_uomxa")
 
 [node name="building" type="Node" parent="."]
 
@@ -76,6 +83,21 @@ build_name = "雕塑"
 [node name="system" type="Node" parent="CanvasLayer"]
 
 [node name="time" parent="CanvasLayer/system" instance=ExtResource("9_bgcl3")]
+
+[node name="ShaderGlobalsOverride" type="ShaderGlobalsOverride" parent="."]
+
+[node name="test" type="Node2D" parent="."]
+visible = false
+light_mask = 3
+position = Vector2(-379, 146)
+
+[node name="Sprite2D" type="Sprite2D" parent="test"]
+light_mask = 2
+position = Vector2(32, -112)
+texture = SubResource("CanvasTexture_vk7yg")
+hframes = 3
+vframes = 4
+frame = 3
 
 [connection signal="mouse_entered" from="people/character2" to="people/character2" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="people/character2" to="people/character2" method="_on_mouse_exited"]

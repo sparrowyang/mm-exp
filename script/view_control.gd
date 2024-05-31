@@ -4,8 +4,11 @@
 这个文件对于整个项目来说是全局的就是说任何地方都能用这个里的函数。 
 """
 extends Node
-
-
+enum WindowType{
+	BUILD_MSG = 1,
+}
+	
+var windows_list = {}
 
 func focus_camera(target:Node):
 	var current_camera = get_viewport().get_camera_2d()
@@ -16,3 +19,12 @@ func focus_camera(target:Node):
 		var center = current_camera.get_screen_center_position()
 		var offset = center - current_camera.position
 		current_camera.position = target.position - offset
+		
+func globle_window_value(window:Control,type:WindowType):
+	if windows_list.get(WindowType.BUILD_MSG) != null:
+		windows_list[WindowType.BUILD_MSG].hide()
+	
+	windows_list[WindowType.BUILD_MSG] = window
+		
+		
+	

@@ -242,5 +242,6 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 shadow_filter_smooth = 7.5
 texture = SubResource("GradientTexture2D_8whum")
+height = 3.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

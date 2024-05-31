@@ -37,7 +37,9 @@ func show_detil():
 	var window_show_size = window.get_window_size()
 	window.position.x = current_camera_size.x - window_show_size.x
 	window.position.y = 0
+	ViewControl.globle_window_value(window,ViewControl.WindowType.BUILD_MSG)
 	window.show()
+
 
 func hide_detil():
 	window.hide()
