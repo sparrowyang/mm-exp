@@ -4,6 +4,19 @@
 
 class_name Character
 extends CharacterBody2D
+"""
+自定义属性
+"""
+@export var custom_texture:Texture2D = null
+## 角色名称
+@export var custom_name = ""
+## 描述
+@export var custom_desc = "" 
+## 控制角色自动行动间隔，单位秒
+## 小于等于0，不自动行动
+@export var action_interval:float = 1 
+
+
 # 定义的角色状态机。  角色目前的状态及目前有停止、四个朝向上、左、下、右。 
 enum Status{
 	IDLE = 0,
@@ -27,6 +40,11 @@ enum Status{
 @onready var pop = $pop
 @onready var pop_amim = $pop/popamim
 @onready var poptimer = $pop/poptimer
+@onready var sprite_2d = $Sprite2D
+
+#TODO: 解耦合！
+@onready var window_header = $CanvasLayer/window/window_border/GridContainer/RichTextLabel
+@onready var window = $CanvasLayer/window
 
 # 用于控制角色移动时候的变量。 
 var move_offset = Vector2(0,0)
@@ -34,15 +52,16 @@ var move_offset = Vector2(0,0)
 var status:Status
 # 用于表示鼠标悬停时候的状态。 
 var focus = false
-## 控制角色自动行动间隔，单位秒
-## 小于等于0，不自动行动
-@export var action_interval:float = 1 
+
 
 func _ready():
-	status = Status.IDLE 
-	timer.start(action_interval)
+	status = Status.IDLE
+	if action_interval > 0:
+		timer.start(action_interval)
 	timer.timeout.connect(make_decision)
 	poptimer.timeout.connect(emotion.bind(false))
+	if custom_texture != null:
+		sprite_2d.texture = custom_texture
 
 # 角色的做决定函数。 会随机地做决定，然后根据所做的决定去播放相应的动画。 
 func make_decision():
@@ -98,15 +117,26 @@ func move():
 	if move_offset != Vector2.ZERO:
 		move_and_collide(move_offset)
 
+# TODO: 解耦合！
 func show_detil():
-	pass
+	var region = Rect2(0,0,32,32)
+	window_header.clear()
+	window_header.add_image(sprite_2d.texture,0,0,Color(1, 1, 1, 1),5,region,null,false,"",false)
+	var current_camera_size = get_viewport_rect().size
+	var window_show_size = window.get_window_size()
+	window.position.x = current_camera_size.x - window_show_size.x
+	window.position.y = 0
+	ViewControl.globle_window_value(window,ViewControl.WindowType.BUILD_MSG)
+	window.update_content( "%s\n%s" % [custom_name,custom_desc])
+	window.show()
+
+	
 """
 相机聚焦如果调用了这个函数，那么那个画面的相机会居中。 居中到这个节点上面。 
 目前这个居中只是暂时的，也就是会暂时的聚焦，在这个上面它不会跟随人物的移动，
 如果需要跟随人物的移动的话，也可以在这下面去做。 
 """
 func focus_camera(flag:bool):
-	print_debug(flag)
 	var current_camera = get_viewport().get_camera_2d()
 	if current_camera == null:
 		print_debug("can not get camera!")

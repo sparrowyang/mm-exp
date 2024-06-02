@@ -13,6 +13,7 @@ config_version=5
 config/name="best_game"
 run/main_scene="res://town.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -21,7 +22,7 @@ ViewControl="*res://script/view_control.gd"
 
 [display]
 
-window/size/resizable=false
+window/stretch/scale=1.7
 mouse_cursor/custom_image="res://static/Battle_Cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2(15, 0)
 
@@ -45,3 +46,4 @@ mouse_mid={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

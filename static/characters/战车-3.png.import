@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqlofljsgrnj"
-path="res://.godot/imported/char.png-d261e29cfd370810a8c57133058ab67b.ctex"
+uid="uid://blh7hql0g6jea"
+path="res://.godot/imported/战车-3.png-fc4dfada5111b5ec5c51169e510a368e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://static/characters/char.png"
-dest_files=["res://.godot/imported/char.png-d261e29cfd370810a8c57133058ab67b.ctex"]
+source_file="res://static/characters/战车-3.png"
+dest_files=["res://.godot/imported/战车-3.png-fc4dfada5111b5ec5c51169e510a368e.ctex"]
 
 [params]
 

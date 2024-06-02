@@ -8,11 +8,14 @@ var msg = ""
 
 func get_window_size():
 	return window_border.size
+	
+func update_content(s:String):
+	var label_msg = $window_border/GridContainer/msg
+	label_msg.text = s
 
 func _on_visibility_changed():
-	if self.visible == true: 
-		var label_msg = $window_border/GridContainer/msg
+	var label_msg = $window_border/GridContainer/msg
 #		self.global_position = Vector2.ZERO
-		label_msg.text = msg
+	label_msg.text = msg
 
 

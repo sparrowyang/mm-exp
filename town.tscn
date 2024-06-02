@@ -1,26 +1,33 @@
-[gd_scene load_steps=16 format=3 uid="uid://oqlpjh8rt355"]
+[gd_scene load_steps=22 format=3 uid="uid://oqlpjh8rt355"]
 
 [ext_resource type="Script" path="res://town.gd" id="1_mw007"]
 [ext_resource type="PackedScene" uid="uid://c5frrvb2r8tdy" path="res://scene/char_impl/man.tscn" id="2_4t2j0"]
 [ext_resource type="Script" path="res://myTimer.gd" id="2_kjrrm"]
 [ext_resource type="TileSet" uid="uid://dwp5ro8dvufp3" path="res://static/common.tres" id="3_jjemn"]
+[ext_resource type="Texture2D" uid="uid://cijaf3j7i8r5p" path="res://static/characters/主角-1.png" id="3_u65qw"]
+[ext_resource type="Texture2D" uid="uid://dg3raghr2atnp" path="res://static/characters/主角-4.png" id="4_6y8v3"]
+[ext_resource type="Texture2D" uid="uid://csmah3f3p44jy" path="res://static/characters/主角-3.png" id="4_of3tu"]
 [ext_resource type="Shader" path="res://night.gdshader" id="4_rkceq"]
+[ext_resource type="Texture2D" uid="uid://c0xr24k2cbyhe" path="res://static/characters/人-9.png" id="5_5ooa2"]
 [ext_resource type="AudioStream" uid="uid://c5unxi671mox3" path="res://static/bgm/17.山河村.mp3" id="5_dmk2j"]
+[ext_resource type="Texture2D" uid="uid://befqa7iycsc5y" path="res://static/characters/战车-6.png" id="5_nqx6f"]
 [ext_resource type="PackedScene" uid="uid://c1j13dw0fxeb4" path="res://scene/build_impl/bless.tscn" id="5_nrm8w"]
+[ext_resource type="Texture2D" uid="uid://brlkh0v2m0lkj" path="res://static/characters/战车-5.png" id="6_1cfug"]
 [ext_resource type="PackedScene" uid="uid://0pvwmy6a4jg4" path="res://scene/build_impl/hotel.tscn" id="6_a1gy1"]
 [ext_resource type="PackedScene" uid="uid://crcchyg167him" path="res://scene/build_impl/center.tscn" id="7_m006u"]
 [ext_resource type="Script" path="res://script/camera_impl.gd" id="7_uomxa"]
 [ext_resource type="PackedScene" uid="uid://bo3a57jf3xd47" path="res://scene/build_impl/figure.tscn" id="8_ysk0p"]
 [ext_resource type="PackedScene" uid="uid://dy2tpqxvdluoy" path="res://scene/UI/header.tscn" id="9_bgcl3"]
-[ext_resource type="Texture2D" uid="uid://bqlofljsgrnj" path="res://static/characters/char.png" id="12_4bdg5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ivyk7"]
 shader = ExtResource("4_rkceq")
 shader_parameter/focus_color = Color(0, 0, 0, 1)
 shader_parameter/deep = 0.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3o3if"]
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_vk7yg"]
-diffuse_texture = ExtResource("12_4bdg5")
+diffuse_texture = SubResource("CompressedTexture2D_3o3if")
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(579, 318)
@@ -30,13 +37,43 @@ script = ExtResource("1_mw007")
 
 [node name="character2" parent="people" instance=ExtResource("2_4t2j0")]
 position = Vector2(584, 344)
+custom_texture = ExtResource("3_u65qw")
+custom_name = "雷班纳"
+custom_desc = "我是主角？"
 
 [node name="character3" parent="people" instance=ExtResource("2_4t2j0")]
 position = Vector2(280, 160)
+custom_texture = ExtResource("4_of3tu")
+custom_name = "士兵"
+custom_desc = "谁说女子不如男"
 
 [node name="character" parent="people" instance=ExtResource("2_4t2j0")]
 position = Vector2(624, 144)
 scale = Vector2(1.00533, 1)
+custom_texture = ExtResource("5_nqx6f")
+custom_name = "战车"
+action_interval = 0.0
+
+[node name="character4" parent="people" instance=ExtResource("2_4t2j0")]
+position = Vector2(496, 144)
+scale = Vector2(1.00533, 1)
+custom_texture = ExtResource("4_6y8v3")
+custom_name = "狼"
+custom_desc = "爱叫的小狗"
+
+[node name="character5" parent="people" instance=ExtResource("2_4t2j0")]
+position = Vector2(880, 328)
+scale = Vector2(1.00533, 1)
+custom_texture = ExtResource("5_5ooa2")
+custom_name = "女人"
+custom_desc = "镇子外面是什么"
+
+[node name="character6" parent="people" instance=ExtResource("2_4t2j0")]
+position = Vector2(272, 320)
+scale = Vector2(1.00533, 1)
+custom_texture = ExtResource("6_1cfug")
+custom_name = "战车"
+action_interval = 0.0
 
 [node name="Timer" type="Timer" parent="."]
 script = ExtResource("2_kjrrm")
@@ -105,3 +142,9 @@ frame = 3
 [connection signal="mouse_exited" from="people/character3" to="people/character3" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="people/character" to="people/character" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="people/character" to="people/character" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="people/character4" to="people/character4" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="people/character4" to="people/character4" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="people/character5" to="people/character5" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="people/character5" to="people/character5" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="people/character6" to="people/character6" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="people/character6" to="people/character6" method="_on_mouse_exited"]

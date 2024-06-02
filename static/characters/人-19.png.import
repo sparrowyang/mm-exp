@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6otxkgxomxs8"
-path="res://.godot/imported/$行人1.png-831626ee26fb9868e00c73aece92237d.ctex"
+uid="uid://cdxv63p302nup"
+path="res://.godot/imported/人-19.png-24e5bd9c6cd9ee6c36dcf6593aa94f11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://static/characters/$行人1.png"
-dest_files=["res://.godot/imported/$行人1.png-831626ee26fb9868e00c73aece92237d.ctex"]
+source_file="res://static/characters/人-19.png"
+dest_files=["res://.godot/imported/人-19.png-24e5bd9c6cd9ee6c36dcf6593aa94f11.ctex"]
 
 [params]
 
