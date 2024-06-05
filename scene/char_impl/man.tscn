@@ -10,17 +10,12 @@ size = Vector2(28, 33)
 input_pickable = true
 
 [node name="shap" parent="." index="2"]
-position = Vector2(35, 31.5)
 shape = SubResource("RectangleShape2D_4kvos")
 
-[node name="Camera2D" type="Camera2D" parent="." index="3"]
-enabled = false
-position_smoothing_enabled = true
-
-[node name="se-clicked" type="AudioStreamPlayer" parent="." index="4"]
+[node name="se-clicked" type="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource("2_4qdsn")
 
-[node name="light" parent="." index="6"]
+[node name="light" parent="." index="5"]
 visible = true
 scale = Vector2(6.45673, -6.125)
 color = Color(1, 1, 1, 0)

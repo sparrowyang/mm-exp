@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr2sokupfdqj0"]
+[gd_scene load_steps=6 format=3 uid="uid://cr2sokupfdqj0"]
 
 [ext_resource type="TileSet" uid="uid://dwp5ro8dvufp3" path="res://static/common.tres" id="1_hfqlw"]
 [ext_resource type="Script" path="res://scene/build.gd" id="1_qffxl"]
 [ext_resource type="Shader" path="res://scene/build.gdshader" id="2_ho6ds"]
 [ext_resource type="AudioStream" uid="uid://wb361dhnvc7r" path="res://static/bgm/001-System01.ogg" id="4_vk8jm"]
-[ext_resource type="PackedScene" uid="uid://dr86oxwldiy77" path="res://scene/UI/window.tscn" id="5_rxcjv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_op85s"]
 resource_local_to_scene = true
@@ -21,6 +20,7 @@ position = Vector2(1, 61)
 [node name="TileMap" type="TileMap" parent="."]
 light_mask = 2
 material = SubResource("ShaderMaterial_op85s")
+use_parent_material = true
 position = Vector2(-46, -52)
 tile_set = ExtResource("1_hfqlw")
 format = 2
@@ -38,9 +38,5 @@ stream = ExtResource("4_vk8jm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="window" parent="CanvasLayer" instance=ExtResource("5_rxcjv")]
-visible = false
-
 [connection signal="mouse_entered" from="StaticBody2D" to="." method="_on_static_body_2d_mouse_entered"]
 [connection signal="mouse_exited" from="StaticBody2D" to="." method="_on_static_body_2d_mouse_exited"]
-[connection signal="visibility_changed" from="CanvasLayer/window" to="CanvasLayer/window" method="_on_visibility_changed"]

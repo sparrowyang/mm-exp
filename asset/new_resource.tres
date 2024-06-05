@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemImpl" load_steps=3 format=3 uid="uid://cv02du6ye4hie"]
+
+[ext_resource type="Texture2D" uid="uid://cjsrtog7xla0s" path="res://static/item/box-001.png" id="1_26ocn"]
+[ext_resource type="Script" path="res://script/data/item.gd" id="2_41aqi"]
+
+[resource]
+script = ExtResource("2_41aqi")
+custom_texture = ExtResource("1_26ocn")
+custom_price = 4
+custom_name = "未知物品"
+custom_desc = "恭喜你找到游戏BUG啦！！！"

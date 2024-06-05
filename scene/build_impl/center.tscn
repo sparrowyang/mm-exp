@@ -16,6 +16,7 @@ shader_parameter/deep = 0.0
 size = Vector2(98, 96)
 
 [node name="Node2D" instance=ExtResource("1_3fs38")]
+use_parent_material = true
 
 [node name="LightOccluder2D" parent="." index="0"]
 occluder = SubResource("OccluderPolygon2D_a456o")

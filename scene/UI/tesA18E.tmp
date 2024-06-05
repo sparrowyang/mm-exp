@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://buq1oyxtvyoo6"]
+
+[ext_resource type="Texture2D" uid="uid://brrtlrhcfivna" path="res://static/Window.png" id="1_iq8tg"]
+[ext_resource type="Script" path="res://script/scene/text_printer.gd" id="2_i61jj"]
+[ext_resource type="Script" path="res://script/scene/items_window.gd" id="3_rddox"]
+
+[node name="Control" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="window_border" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_iq8tg")
+region_rect = Rect2(64, 0, 64, 64)
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="window_border"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="ScrollContainer" type="ScrollContainer" parent="window_border/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="window_border/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "こんにちは!今日は 2024年6月4日です。これは多様な言語を含むテストテキストです。様々な文字や表現を探索しましょう。
+
+这是一个丰富多彩的测试文本。它涵盖了不同的语言和文字,包括日语、中文、英语以及韩文。我们可以在这里尽情地探索各种语言的魅力。
+
+Hello, welcome to this multilingual extravaganza! Let's dive into the diverse world of languages - from the elegant Japanese script to the vibrant Chinese characters, the concise English, the playful emojis 😊😄😀, and the beautiful Korean hangul.
+
+안녕하세요! 여러 언어와 문화를 아우르는 이 특별한 텍스트를 즐겁게 감상하시길 바랍니다. 언어는 우리를 하나로 연결하는 힘이 있습니다. 서로 다른 언어를 배우고 이해하는 것은 참으로 소중한 경험이 될 것입니다."
+fit_content = true
+autowrap_mode = 2
+script = ExtResource("2_i61jj")
+
+[node name="Timer" type="Timer" parent="window_border/MarginContainer/ScrollContainer/RichTextLabel"]
+
+[node name="items" type="ScrollContainer" parent="window_border/MarginContainer"]
+layout_mode = 2
+script = ExtResource("3_rddox")
+
+[node name="items" type="ItemList" parent="window_border/MarginContainer/items"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_columns = 4
+same_column_width = true
+icon_scale = 0.7

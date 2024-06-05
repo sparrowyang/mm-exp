@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://buq1oyxtvyoo6"]
+
+[ext_resource type="Script" path="res://script/scene/window.gd" id="1_bd86l"]
+[ext_resource type="Texture2D" uid="uid://brrtlrhcfivna" path="res://static/Window.png" id="2_5mcnu"]
+[ext_resource type="Script" path="res://script/scene/text_printer.gd" id="3_8gncd"]
+[ext_resource type="Script" path="res://script/scene/items_window.gd" id="4_r5b7l"]
+
+[sub_resource type="Theme" id="Theme_p44on"]
+MarginContainer/constants/margin_bottom = 0
+MarginContainer/constants/margin_left = 0
+MarginContainer/constants/margin_right = 0
+MarginContainer/constants/margin_top = 0
+
+[node name="SPWindow" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 3
+anchor_left = 0.37
+anchor_top = 0.346
+anchor_right = 0.63
+anchor_bottom = 0.654
+offset_left = -0.23999
+offset_top = -0.208008
+offset_right = 0.239929
+offset_bottom = 0.207977
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_bd86l")
+
+[node name="window_border" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_5mcnu")
+region_rect = Rect2(64, 0, 64, 64)
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="window_border"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="text" type="ScrollContainer" parent="window_border/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="window_border/MarginContainer/text"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "asdasdasdas"
+fit_content = true
+autowrap_mode = 2
+script = ExtResource("3_8gncd")
+
+[node name="Timer" type="Timer" parent="window_border/MarginContainer/text/RichTextLabel"]
+
+[node name="items" type="ScrollContainer" parent="window_border/MarginContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("4_r5b7l")
+
+[node name="items" type="ItemList" parent="window_border/MarginContainer/items"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_p44on")
+max_columns = 4
+icon_scale = 0.7
+
+[node name="cloase_btn" type="Button" parent="window_border/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "-"

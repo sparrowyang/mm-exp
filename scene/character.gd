@@ -32,10 +32,10 @@ enum Status{
 # 角色的碰撞形状节点就是可以决定角色在物理碰撞中的形状。
 # 这个目前是没有形状，他会在子类去实现，就是在实现的时候衍生的时候去加，在这里不用加。 
 @onready var shap = $shap
-# 摄像机节点，用于镜头追踪。 
-@onready var camera_2d = $Camera2D
+## 摄像机节点，用于镜头追踪。 
+#@onready var camera_2d = $Camera2D
 # 点击时用于播放的音效。 
-@onready var se_clicked = $"se-clicked"
+@onready var se_clicked = $se_clicked
 # 下面的三个变量是角色的气泡就，目前用于显示角色的气泡心情。 它是一个精灵节点，然后包含动画和计时器。 
 @onready var pop = $pop
 @onready var pop_amim = $pop/popamim
@@ -144,8 +144,8 @@ func focus_camera(flag:bool):
 	else:
 		var center = current_camera.get_screen_center_position()
 		var offset = center - current_camera.position
+		print_debug(center,current_camera.position,position,offset)
 		current_camera.position = position - offset
-		
 #	if flag:
 #		camera_2d.enabled = status
 #		se_clicked.play()
@@ -155,15 +155,17 @@ func focus_camera(flag:bool):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	move()
+	move() 
 	
 """
 处理鼠标点击时的事件。目前的话会去聚焦相机，然后展示表情。 
 """
 func _on_input_event(viewport, event, shape_idx):
+	print_debug(1)
 	if event is InputEventMouseButton:
 		if(event.is_pressed()):
 			focus = !focus
+			print_debug(2)
 			show_detil()
 			focus_camera(true)
 			emotion(true)

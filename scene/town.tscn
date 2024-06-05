@@ -1,89 +1,34 @@
-[gd_scene load_steps=22 format=3 uid="uid://oqlpjh8rt355"]
+[gd_scene load_steps=12 format=3 uid="uid://oqlpjh8rt355"]
 
-[ext_resource type="Script" path="res://town.gd" id="1_mw007"]
-[ext_resource type="PackedScene" uid="uid://c5frrvb2r8tdy" path="res://scene/char_impl/man.tscn" id="2_4t2j0"]
-[ext_resource type="Script" path="res://myTimer.gd" id="2_kjrrm"]
-[ext_resource type="TileSet" uid="uid://dwp5ro8dvufp3" path="res://static/common.tres" id="3_jjemn"]
-[ext_resource type="Texture2D" uid="uid://cijaf3j7i8r5p" path="res://static/characters/主角-1.png" id="3_u65qw"]
-[ext_resource type="Texture2D" uid="uid://dg3raghr2atnp" path="res://static/characters/主角-4.png" id="4_6y8v3"]
-[ext_resource type="Texture2D" uid="uid://csmah3f3p44jy" path="res://static/characters/主角-3.png" id="4_of3tu"]
-[ext_resource type="Shader" path="res://night.gdshader" id="4_rkceq"]
-[ext_resource type="Texture2D" uid="uid://c0xr24k2cbyhe" path="res://static/characters/人-9.png" id="5_5ooa2"]
-[ext_resource type="AudioStream" uid="uid://c5unxi671mox3" path="res://static/bgm/17.山河村.mp3" id="5_dmk2j"]
-[ext_resource type="Texture2D" uid="uid://befqa7iycsc5y" path="res://static/characters/战车-6.png" id="5_nqx6f"]
-[ext_resource type="PackedScene" uid="uid://c1j13dw0fxeb4" path="res://scene/build_impl/bless.tscn" id="5_nrm8w"]
-[ext_resource type="Texture2D" uid="uid://brlkh0v2m0lkj" path="res://static/characters/战车-5.png" id="6_1cfug"]
-[ext_resource type="PackedScene" uid="uid://0pvwmy6a4jg4" path="res://scene/build_impl/hotel.tscn" id="6_a1gy1"]
-[ext_resource type="PackedScene" uid="uid://crcchyg167him" path="res://scene/build_impl/center.tscn" id="7_m006u"]
-[ext_resource type="Script" path="res://script/camera_impl.gd" id="7_uomxa"]
-[ext_resource type="PackedScene" uid="uid://bo3a57jf3xd47" path="res://scene/build_impl/figure.tscn" id="8_ysk0p"]
-[ext_resource type="PackedScene" uid="uid://dy2tpqxvdluoy" path="res://scene/UI/header.tscn" id="9_bgcl3"]
+[ext_resource type="Script" path="res://script/scene/town.gd" id="1_adv06"]
+[ext_resource type="PackedScene" uid="uid://c5frrvb2r8tdy" path="res://scene/char_impl/man.tscn" id="9_15s7f"]
+[ext_resource type="Script" path="res://script/myTimer.gd" id="9_vba7b"]
+[ext_resource type="Shader" path="res://shader/night.gdshader" id="10_5uswf"]
+[ext_resource type="PackedScene" uid="uid://crcchyg167him" path="res://scene/build_impl/center.tscn" id="10_ki30y"]
+[ext_resource type="TileSet" uid="uid://dwp5ro8dvufp3" path="res://static/common.tres" id="11_451qd"]
+[ext_resource type="AudioStream" uid="uid://c5unxi671mox3" path="res://static/bgm/17.山河村.mp3" id="12_qymqu"]
+[ext_resource type="Script" path="res://script/camera_impl.gd" id="13_b0awj"]
+[ext_resource type="Script" path="res://script/scene/system.gd" id="18_tgpwh"]
+[ext_resource type="PackedScene" uid="uid://buq1oyxtvyoo6" path="res://scene/UI/windows.tscn" id="19_31gwg"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ivyk7"]
-shader = ExtResource("4_rkceq")
-shader_parameter/focus_color = Color(0, 0, 0, 1)
-shader_parameter/deep = 0.0
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3o3if"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_vk7yg"]
-diffuse_texture = SubResource("CompressedTexture2D_3o3if")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wjgex"]
+shader = ExtResource("10_5uswf")
+shader_parameter/focus_color = Color(0, 0, 0.305882, 1)
+shader_parameter/deep = 0.74
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(579, 318)
-script = ExtResource("1_mw007")
-
-[node name="people" type="Node" parent="."]
-
-[node name="character2" parent="people" instance=ExtResource("2_4t2j0")]
-position = Vector2(584, 344)
-custom_texture = ExtResource("3_u65qw")
-custom_name = "雷班纳"
-custom_desc = "我是主角？"
-
-[node name="character3" parent="people" instance=ExtResource("2_4t2j0")]
-position = Vector2(280, 160)
-custom_texture = ExtResource("4_of3tu")
-custom_name = "士兵"
-custom_desc = "谁说女子不如男"
-
-[node name="character" parent="people" instance=ExtResource("2_4t2j0")]
-position = Vector2(624, 144)
-scale = Vector2(1.00533, 1)
-custom_texture = ExtResource("5_nqx6f")
-custom_name = "战车"
-action_interval = 0.0
-
-[node name="character4" parent="people" instance=ExtResource("2_4t2j0")]
-position = Vector2(496, 144)
-scale = Vector2(1.00533, 1)
-custom_texture = ExtResource("4_6y8v3")
-custom_name = "狼"
-custom_desc = "爱叫的小狗"
-
-[node name="character5" parent="people" instance=ExtResource("2_4t2j0")]
-position = Vector2(880, 328)
-scale = Vector2(1.00533, 1)
-custom_texture = ExtResource("5_5ooa2")
-custom_name = "女人"
-custom_desc = "镇子外面是什么"
-
-[node name="character6" parent="people" instance=ExtResource("2_4t2j0")]
-position = Vector2(272, 320)
-scale = Vector2(1.00533, 1)
-custom_texture = ExtResource("6_1cfug")
-custom_name = "战车"
-action_interval = 0.0
+material = SubResource("ShaderMaterial_wjgex")
+position = Vector2(592, 331)
+script = ExtResource("1_adv06")
 
 [node name="Timer" type="Timer" parent="."]
-script = ExtResource("2_kjrrm")
+script = ExtResource("9_vba7b")
 
 [node name="town_map" type="TileMap" parent="."]
 light_mask = 2
 texture_filter = 1
-material = SubResource("ShaderMaterial_ivyk7")
-position = Vector2(61, 34)
-tile_set = ExtResource("3_jjemn")
+use_parent_material = true
+tile_set = ExtResource("11_451qd")
 rendering_quadrant_size = 32
 format = 2
 layer_0/z_index = -1
@@ -91,60 +36,53 @@ layer_0/tile_data = PackedInt32Array(-131076, 393217, 3, -131075, 393217, 3, -13
 layer_1/tile_data = PackedInt32Array(-655379, 458753, 1, -655378, 458753, 1, -655377, 458753, 1, -589841, 458753, 1, -589842, 458753, 1, -589843, 458753, 1, -655366, 458753, 1, -655365, 458753, 1, -655364, 458753, 1, -655363, 458753, 1, -655362, 458753, 1, -655361, 458753, 1, -720896, 458753, 1, -589831, 327681, 1, -589830, 327681, 1, -589829, 327681, 1, -589828, 327681, 1, -589827, 327681, 1, -589826, 327681, 1, -589825, 327681, 1, -655360, 327681, 1, -655359, 327681, 1, -589823, 327681, 1, -589822, 327681, 1, -524296, 327681, 1, -524295, 327681, 1, -720869, 327681, 1, -720870, 458753, 1, -720871, 458753, 1, -720872, 458753, 1, -655336, 327681, 1, -655335, 327681, 1, -655334, 327681, 1, -655333, 327681, 1, -589805, 458753, 1, -589804, 458753, 1, 786412, 65537, 1, 851948, 65537, 1, 917484, 65537, 1, 917485, 65537, 1, 917486, 65537, 1, 917487, 65537, 1, 917488, 65537, 1, 917489, 65537, 1, 917490, 65537, 1, 917491, 65537, 1, 917492, 65537, 1, 917493, 65537, 1, 917494, 65537, 1, 917495, 65537, 1, 917496, 65537, 1, 917497, 65537, 1, 917503, 65537, 1, 851968, 65537, 1, 851969, 65537, 1, 851970, 65537, 1, 851971, 65537, 1, 851972, 65537, 1, 851973, 65537, 1, 851974, 65537, 1, 851975, 65537, 1, 851976, 65537, 1, 851977, 65537, 1, 851978, 65537, 1, 851979, 65537, 1, 851980, 65537, 1, 851981, 65537, 1, 851982, 65537, 1, 851983, 65537, 1, 851984, 65537, 1, 851985, 65537, 1, 851986, 65537, 1, -524269, 65537, 1, -458733, 65537, 1, -393197, 65537, 1, -327661, 65537, 1, -262125, 65537, 1, -196589, 65537, 1, -131053, 65537, 1, -65517, 65537, 1, 19, 65537, 1, 65555, 65537, 1, 131091, 65537, 1, 196627, 65537, 1, 262163, 65537, 1, 327699, 65537, 1, 327700, 65537, 1, 393236, 65537, 1, 458772, 65537, 1, 524308, 65537, 1, 524307, 65537, 1, 589843, 65537, 1, 655379, 65537, 1, 720915, 65537, 1, 786451, 65537, 1, 851987, 65537, 1, 393235, 65537, 1, 458771, 65537, 1, 983033, 196609, 2, 983039, 262145, 2, 720872, 262145, 5, 786409, 262145, 5, 786408, 262145, 5, 786410, 262145, 5, 720873, 262145, 5, 720871, 262145, 5, 786407, 262145, 5, 851944, 262145, 5, 851945, 262145, 5, 851946, 262145, 5, 786411, 262145, 5, 851947, 262145, 5, -65543, 65537, 0, -65546, 65537, 0, 131069, 65537, 0, 131071, 65537, 0, 131068, 65537, 0, 196604, 65537, 0, -524294, 65537, 0, -524293, 65537, 0, -524292, 65537, 0, -524291, 65537, 0, -524290, 65537, 0, -524289, 65537, 0, -589824, 65537, 0, -458760, 65537, 0, -458759, 65537, 0, -458758, 65537, 0, -458757, 65537, 0, -458756, 65537, 0, -458755, 65537, 0, -458754, 65537, 0, -458753, 65537, 0, -524288, 65537, 0, -524287, 65537, 0, -524286, 65537, 0, -524285, 65537, 0, -458761, 65537, 0, -458762, 65537, 0, -262136, 65537, 0, -327672, 65537, 0, -458744, 65537, 0, -262131, 65537, 0, 196620, 65537, 0, 327677, 393217, 6, 589821, 262145, 4, 589809, 65537, 1, 589808, 65537, 1, 262132, 393217, 6, 196593, 393217, 6, 327665, 393217, 6, 458738, 393217, 6, 524274, 65537, 0, 393199, 393217, 6, 655345, 393217, 6, 720881, 65537, 0, 720884, 393217, 6, 655349, 393217, 6, 589814, 65537, 1, 458743, 393217, 6, 458742, 393217, 6, 393206, 393217, 6, 458739, 327681, 6, 524275, 327681, 6, 393203, 327681, 6, 393201, 327681, 6, 458736, 65537, 0, 655350, 327681, 6, 786415, 65537, 0, 589806, 65537, 1, 786421, 65537, 0, 720885, 65537, 0, 720886, 65537, 0, 720887, 65537, 0, 131053, 65537, 1, 131054, 65537, 1, 131055, 65537, 1, 131056, 65537, 1, 131057, 65537, 1, 131060, 65537, 1, 131061, 65537, 1, 131062, 65537, 1, 131063, 65537, 1, 131064, 65537, 1, 131065, 65537, 1, 196601, 65537, 1, 262137, 65537, 1, 327673, 65537, 1, 393209, 65537, 1, 851961, 65537, 1, 786425, 65537, 1, 720889, 65537, 1, 655353, 65537, 1, 458745, 65537, 1, 131078, 196609, 8, 196614, 196609, 8, 262150, 196609, 8, 262149, 196609, 8, 65540, 196609, 8, 65542, 196609, 8, 65541, 196609, 8, 65539, 196609, 8, 131075, 196609, 8, 196611, 196609, 8, 262147, 196609, 8, 262148, 196609, 8, -589809, 65537, 1, -524273, 65537, 1, -458737, 65537, 1, -393201, 65537, 1, -327665, 65537, 1, -262129, 65537, 1, -196593, 65537, 1, -131057, 65537, 1, -65521, 65537, 1, 15, 65537, 1, 65551, 65537, 1, 131087, 65537, 1, 196623, 65537, 1, 262159, 65537, 1, 327695, 65537, 1, 393231, 65537, 1, 458767, 65537, 1, 524303, 65537, 1, 524302, 65537, 1, 524301, 65537, 1, 524300, 65537, 1, 524299, 65537, 1, 524298, 65537, 1, 524297, 65537, 1, 524296, 65537, 1, 524295, 65537, 1, 524294, 65537, 1, 524293, 65537, 1, 524292, 65537, 1, 524291, 65537, 1, 524290, 65537, 1, 524289, 327681, 9, 524288, 196609, 6, 589823, 262145, 4, 589822, 262145, 4, 589820, 196609, 6, 589819, 327681, 9, 589818, 65537, 1, 589817, 65537, 1, 589816, 65537, 1, 589815, 65537, 1, 589813, 65537, 1, 589812, 65537, 1, 589811, 65537, 1, 589810, 65537, 1, 589807, 65537, 1, 589805, 65537, 1)
 
 [node name="bgm" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_dmk2j")
+stream = ExtResource("12_qymqu")
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_smoothed = true
 position_smoothing_enabled = true
-script = ExtResource("7_uomxa")
-
-[node name="building" type="Node" parent="."]
-
-[node name="bless" parent="building" instance=ExtResource("5_nrm8w")]
-position = Vector2(560, 272)
-
-[node name="hotel" parent="building" instance=ExtResource("6_a1gy1")]
-position = Vector2(840, 208)
-
-[node name="center" parent="building" instance=ExtResource("7_m006u")]
-position = Vector2(208, 280)
-build_name = "中心"
-
-[node name="figure" parent="building" instance=ExtResource("8_ysk0p")]
-position = Vector2(800, 432)
-build_name = "雕塑"
+script = ExtResource("13_b0awj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="system" type="Node" parent="CanvasLayer"]
+[node name="system" type="Node2D" parent="CanvasLayer"]
+visible = false
+script = ExtResource("18_tgpwh")
 
-[node name="time" parent="CanvasLayer/system" instance=ExtResource("9_bgcl3")]
+[node name="time_ui" parent="CanvasLayer/system" instance=ExtResource("19_31gwg")]
+custom_minimum_size = Vector2(300, 50)
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 300.0
+offset_bottom = 65.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Timer" type="Timer" parent="CanvasLayer/system"]
+
+[node name="setting_ui" parent="CanvasLayer/system" instance=ExtResource("19_31gwg")]
+offset_left = -681.24
+offset_top = -38.208
+offset_right = -680.76
+offset_bottom = -37.792
 
 [node name="ShaderGlobalsOverride" type="ShaderGlobalsOverride" parent="."]
 
-[node name="test" type="Node2D" parent="."]
-visible = false
-light_mask = 3
-position = Vector2(-379, 146)
+[node name="poeple" type="Node2D" parent="."]
+use_parent_material = true
+position = Vector2(250, 250)
 
-[node name="Sprite2D" type="Sprite2D" parent="test"]
-light_mask = 2
-position = Vector2(32, -112)
-texture = SubResource("CanvasTexture_vk7yg")
-hframes = 3
-vframes = 4
-frame = 3
+[node name="character" parent="poeple" instance=ExtResource("9_15s7f")]
+position = Vector2(-387, -373)
+action_interval = 0.0
 
-[connection signal="mouse_entered" from="people/character2" to="people/character2" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="people/character2" to="people/character2" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="people/character3" to="people/character3" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="people/character3" to="people/character3" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="people/character" to="people/character" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="people/character" to="people/character" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="people/character4" to="people/character4" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="people/character4" to="people/character4" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="people/character5" to="people/character5" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="people/character5" to="people/character5" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="people/character6" to="people/character6" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="people/character6" to="people/character6" method="_on_mouse_exited"]
+[node name="build" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="Node2D" parent="build" instance=ExtResource("10_ki30y")]

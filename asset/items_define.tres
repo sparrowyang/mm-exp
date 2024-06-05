@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cep48e8p2pfk7"]
+
+[ext_resource type="Script" path="res://script/data/items_define.gd" id="1_l272v"]
+
+[resource]
+resource_name = "game_data"
+script = ExtResource("1_l272v")

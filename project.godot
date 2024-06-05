@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="best_game"
-run/main_scene="res://town.tscn"
+run/main_scene="res://scene/town.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"
@@ -22,7 +22,9 @@ ViewControl="*res://script/view_control.gd"
 
 [display]
 
-window/stretch/scale=1.7
+window/size/viewport_width=1000
+window/size/viewport_height=500
+window/size/resizable=false
 mouse_cursor/custom_image="res://static/Battle_Cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2(15, 0)
 

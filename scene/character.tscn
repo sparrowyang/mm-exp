@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://scene/character.gd" id="1_2d1xw"]
 [ext_resource type="Texture2D" uid="uid://nus1q1y86cpe" path="res://static/characters/人-8.png" id="2_uugkg"]
 [ext_resource type="Texture2D" uid="uid://dpc3xejfrx6yc" path="res://static/misc/ImanorBalloon.png" id="3_0sn15"]
-[ext_resource type="Script" path="res://scene/UI/window.gd" id="4_8v0yn"]
 [ext_resource type="Texture2D" uid="uid://brrtlrhcfivna" path="res://static/Window.png" id="5_nl2ar"]
 
 [sub_resource type="Animation" id="Animation_yhcdh"]
@@ -196,14 +195,37 @@ gradient = SubResource("Gradient_3bfbf")
 fill = 1
 fill_from = Vector2(0.512821, 0.504274)
 
+[sub_resource type="GDScript" id="GDScript_y1dt2"]
+script/source = "extends Control
+class_name WindowsImpl
+var msg = \"\"
+###
+#func _ready():
+#	self.global_position = Vector2.ZERO
+@onready var window_border = $window_border
+
+func get_window_size():	return window_border.size
+	
+func update_content(s:String):
+	var label_msg = $window_border/GridContainer/msg
+	label_msg.text = s
+
+func _on_visibility_changed():
+	var label_msg = $window_border/GridContainer/msg
+#		self.global_position = Vector2.ZERO
+	label_msg.text = msg
+
+
+"
+
 [sub_resource type="LabelSettings" id="LabelSettings_ce5dh"]
 
 [node name="character" type="CharacterBody2D"]
-position = Vector2(580, 297)
+use_parent_material = true
 script = ExtResource("1_2d1xw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(35, 31)
+use_parent_material = true
 texture = ExtResource("2_uugkg")
 hframes = 4
 vframes = 4
@@ -221,7 +243,6 @@ speed_scale = 3.0
 
 [node name="pop" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(46, -7)
 scale = Vector2(2, 2)
 texture = ExtResource("3_0sn15")
 hframes = 8
@@ -236,7 +257,6 @@ libraries = {
 
 [node name="light" type="PointLight2D" parent="."]
 visible = false
-position = Vector2(35, 31)
 scale = Vector2(6.5, -6.125)
 enabled = false
 energy = 4.69
@@ -261,7 +281,7 @@ offset_left = -32.256
 offset_top = -47.952
 offset_right = -32.256
 offset_bottom = -47.952
-script = ExtResource("4_8v0yn")
+script = SubResource("GDScript_y1dt2")
 
 [node name="window_border" type="NinePatchRect" parent="CanvasLayer/window"]
 layout_mode = 0

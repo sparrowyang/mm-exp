@@ -27,23 +27,23 @@ var status: Propterty = Propterty.new()
 var focus = false
 # 材质的图节点主要是用这个去控制着色器，然后改变节点的颜色。 
 @onready var tile_map = $TileMap
-@onready var window = $CanvasLayer/window
+#@onready var window = $CanvasLayer/window
 
 #var detil = preload("res://scene/UI/window.tscn")
 func show_detil():
-	window.msg = "name  [%s]\nlevel  %s\nprice  %s\nnext_level  %s\n"% \
-							[build_name,status.level,status.price,status.next_level]
-	var current_camera_size = get_viewport_rect().size
-	var window_show_size = window.get_window_size()
-	window.position.x = current_camera_size.x - window_show_size.x
-	window.position.y = 0
-	ViewControl.globle_window_value(window,ViewControl.WindowType.BUILD_MSG)
-	window.show()
-
-
+	#window.msg = "name  [%s]\nlevel  %s\nprice  %s\nnext_level  %s\n"% \
+							#[build_name,status.level,status.price,status.next_level]
+	#var current_camera_size = get_viewport_rect().size
+	#var window_show_size = window.get_window_size()
+	#window.position.x = current_camera_size.x - window_show_size.x
+	#window.position.y = 0
+	#ViewControl.globle_window_value(window,ViewControl.WindowType.BUILD_MSG)
+	#window.show()
+	pass
+	
 func hide_detil():
-	window.hide()
-
+	#window.hide()
+	pass
 
 """
 处理鼠标点击该节点的时候的事件。如果鼠标点击的建筑就会通过show_detil去展示信息。 
