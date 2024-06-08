@@ -1,21 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5frrvb2r8tdy"]
+[gd_scene load_steps=3 format=3 uid="uid://c5frrvb2r8tdy"]
 
 [ext_resource type="PackedScene" uid="uid://biwbahd5gnl42" path="res://scene/character.tscn" id="1_haxj6"]
-[ext_resource type="AudioStream" uid="uid://wb361dhnvc7r" path="res://static/bgm/001-System01.ogg" id="2_4qdsn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4kvos"]
 size = Vector2(28, 33)
 
 [node name="character" instance=ExtResource("1_haxj6")]
+position = Vector2(-155, 0)
 input_pickable = true
 
 [node name="shap" parent="." index="2"]
 shape = SubResource("RectangleShape2D_4kvos")
 
-[node name="se-clicked" type="AudioStreamPlayer" parent="." index="3"]
-stream = ExtResource("2_4qdsn")
-
-[node name="light" parent="." index="5"]
+[node name="light" parent="." index="4"]
 visible = true
 scale = Vector2(6.45673, -6.125)
 color = Color(1, 1, 1, 0)
